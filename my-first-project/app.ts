@@ -4,22 +4,29 @@ let isPaid: boolean = true;
 let totalBill = 1500; //it is not nessesary to add type in variables
 let itemCount: number = 10
 const taxRate: number = 0.15;
+let customerName = "Amal";
 
-let finalPrice: number = itemPrice[1] + itemPrice[1] * taxRate;
-
-console.log("Welcome to ", shopName);
-
-for (let i = 0; i < itemPrice.length; i++) {//old method
-    console.log(i + 1, itemPrice[i]);
+function sayWelcome(name: any) {
+    console.log("Welcome to ", shopName, "|", name);
+}
+function sayGoodbye(name: string) {
+    console.log("Good bye ", name);
+}
+function calculateFinalPrice(price: number[], tax:number): number {
+    let finalPrice: number = price[1] + price[1] * tax;
+    return finalPrice;
 }
 
-itemPrice.forEach((price, i)=>{
-    console.log(i+1,price);
+sayWelcome(customerName);
+
+itemPrice.forEach((price, i) => {//new method
+    console.log("Price:", i + 1, "-", price);
 });
 
-
 if (totalBill > 1500) {
-    console.log("Price is Rs.", finalPrice * itemCount - 150);
+    console.log("Price is Rs.", calculateFinalPrice(itemPrice,taxRate) * itemCount - 150);
 } else {
-    console.log("price is Rs.", finalPrice * itemCount, "[No Discount]");
+    console.log("price is Rs.", calculateFinalPrice(itemPrice,taxRate) * itemCount, "[No Discount]");
 }
+
+sayGoodbye(customerName);
