@@ -1,33 +1,56 @@
-export {}
-const shopName: string = "Myshop";
-let itemPrice = [100, 150, 500, 1000];
-let isPaid: boolean = true;
-let totalBill = 1500; //it is not nessesary to add type in variables
-let itemCount: number = 10
-const taxRate: number = 0.15;
-let customerName = "Amal";
+// export {}
 
-function sayWelcome(name: any) {
-    console.log("Welcome to ", shopName, "|", name);
-}
-function sayGoodbye(name: string) {
-    console.log("Good bye ", name);
-}
-function calculateFinalPrice(price: number[], tax:number): number {
-    let finalPrice: number = price[1] + price[1] * tax;
-    return finalPrice;
+interface Customer {
+    name: string;
+    prices: number[];
 }
 
-sayWelcome(customerName);
+let allCustomers: Customer[] = [
+    {
+        name: "Amal",
+        prices: [100, 40, 200]
+    },
+    {
+        name: "Kamal",
+        prices: [50, 400, 100]
+    },
+    {
+        name: "Nimal",
+        prices: [1000, 2000]
+    }
+];
 
-itemPrice.forEach((price, i) => {//new method
-    console.log("Price:", i + 1, "-", price);
+allCustomers.forEach((cust, index) => {
+    console.log(`Customer ${index + 1}: ${cust.name} | Items bought: ${cust.prices.length}`);
 });
 
-if (totalBill > 1500) {
-    console.log("Price is Rs.", calculateFinalPrice(itemPrice,taxRate) * itemCount - 150);
-} else {
-    console.log("price is Rs.", calculateFinalPrice(itemPrice,taxRate) * itemCount, "[No Discount]");
-}
+// const shopName: string = "Myshop";
+// let isPaid: boolean = true;
+// let totalBill = 1500; //it is not nessesary to add type in variables
+// let itemCount: number = 10
+// const taxRate: number = 0.15;
 
-sayGoodbye(customerName);
+// function sayWelcome(name: any) {
+//     console.log("Welcome to ", shopName, "|", name);
+// }
+// function sayGoodbye(name: string) {
+//     console.log("Good bye ", name);
+// }
+// function calculateFinalPrice(price: number[], tax: number): number {
+//     let finalPrice: number = price[1] + price[1] * tax;
+//     return finalPrice;
+// }
+
+// sayWelcome(customerName);
+
+// itemPrice.forEach((price, i) => {//new method
+//     console.log("Price:", i + 1, "-", price);
+// });
+
+// if (totalBill > 1500) {
+//     console.log("Price is Rs.", calculateFinalPrice(itemPrice,taxRate) * itemCount - 150);
+// } else {
+//     console.log("price is Rs.", calculateFinalPrice(itemPrice,taxRate) * itemCount, "[No Discount]");
+// }
+
+// sayGoodbye(customerName);
