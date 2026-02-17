@@ -1,3 +1,4 @@
+export {}
 //-------Scenario------
 //There is a cinema hall named Savoy Cinema and you need to build basic billing system 
 //from only using variables, arrays, functions, loops and conditions.
@@ -24,7 +25,6 @@ function calculatePrice(prices: number[]): number {
         total = total + price;
     });
     return total;
-
 }
 function calculateDiscount(subTotal: number): number {
     if (subTotal > 2000) {
