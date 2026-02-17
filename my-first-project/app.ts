@@ -1,56 +1,27 @@
-// export {}
-
 interface Customer {
-    name: string;
-    prices: number[];
+    name: string,
+    price: number[]
 }
-
 let allCustomers: Customer[] = [
-    {
-        name: "Amal",
-        prices: [100, 40, 200]
-    },
-    {
-        name: "Kamal",
-        prices: [50, 400, 100]
-    },
-    {
-        name: "Nimal",
-        prices: [1000, 2000]
-    }
+    { name: "Amal", price: [200, 50, 300, 100] },
+    { name: "Kamal", price: [1200, 100, 40] },
+    { name: "Sunil", price: [40, 50, 60, 70, 80] },
+    { name: "Vimal", price: [500, 50, 100, 500] },
+    { name: "Ranmal", price: [250, 40] },
+    { name: "Pawan", price: [1000, 100, 50] },
+    { name: "Bimal", price: [750, 50, 100, 50] }
 ];
+const vipThreshold = 1000;
 
-allCustomers.forEach((cust, index) => {
-    console.log(`Customer ${index + 1}: ${cust.name} | Items bought: ${cust.prices.length}`);
-});
+const findVIPCustomers = (customersList: Customer[]) => {
+    customersList.forEach(customer => {
+        let totalBill = customer.price.reduce((ac, price) => ac + price, 0);
 
-// const shopName: string = "Myshop";
-// let isPaid: boolean = true;
-// let totalBill = 1500; //it is not nessesary to add type in variables
-// let itemCount: number = 10
-// const taxRate: number = 0.15;
+        if (totalBill > vipThreshold) {
+            console.log(`⭐ VIP Customer Found: ${customer.name} - Total Bill: Rs.${totalBill}`);
+        }
+    });
+};
 
-// function sayWelcome(name: any) {
-//     console.log("Welcome to ", shopName, "|", name);
-// }
-// function sayGoodbye(name: string) {
-//     console.log("Good bye ", name);
-// }
-// function calculateFinalPrice(price: number[], tax: number): number {
-//     let finalPrice: number = price[1] + price[1] * tax;
-//     return finalPrice;
-// }
 
-// sayWelcome(customerName);
-
-// itemPrice.forEach((price, i) => {//new method
-//     console.log("Price:", i + 1, "-", price);
-// });
-
-// if (totalBill > 1500) {
-//     console.log("Price is Rs.", calculateFinalPrice(itemPrice,taxRate) * itemCount - 150);
-// } else {
-//     console.log("price is Rs.", calculateFinalPrice(itemPrice,taxRate) * itemCount, "[No Discount]");
-// }
-
-// sayGoodbye(customerName);
+findVIPCustomers(allCustomers);
